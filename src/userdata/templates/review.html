@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block review %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% include 'navbar.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/materialize.css' %}" rel="stylesheet">
+<!-- Add font awesome icons to buttons (note that the fa-spin class rotates the icon) -->
+<style>
+.zo{
+  font-size: 20px;
+  font-family:  'Orbitron', sans-serif;
+}
+.center_div{
+    margin: 0 auto;
+    width:35%;
+    color: #f8f9fa!important;
+    position: fixed;
+    top: 120px;
+    left: 650px;
+     /* value of your choice which suits your alignment */
+}
+</style>
+<div class="p-3 mb-2 bg-dark text-dark">
+  <div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Here are the steps to take when hired a maid!
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">1. Ask the maid for her Unique Website ID.</li>
+    <li class="list-group-item">2. Come online, Enter the code, give a review(after the maid is done with her work)</li>
+    <li class="list-group-item">3. Pay the maid as per the respective prices. (Really sorry if you wanted to pay online!)</li>
+  </ul>
+</div>
+<h1 class="center_div"><b><i>Hiring maids has never been so simple!!</h1>
+</div>
+{% if message %}
+<h1><i><b>{{ message }}</h1>
+{% else %}
+<div class="p-3 mb-2 bg-light text-dark">
+  <div class="col-md-4 col-md-offset-6">
+<form action="{% url 'reviewmaid' %}" method='post'>
+  {{ form|crispy }}
+  {% csrf_token %}
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" required>
+      <label class="form-check-label" for="gridCheck">
+        Agree to Terms and Conditions?
+      </label>
+    </div>
+  </div>
+  <button name="submit" class="btn btn-outline-success">Add Review!</button>
+</form>
+</div>
+</div>
+{% endif %}
+{% endblock %}

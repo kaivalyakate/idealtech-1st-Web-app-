@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block thankyou %}
+<div class="alert alert-success" role="alert">
+  {% if confirm_message %}
+  <h4 class="alert-heading">{{ confirm_message }}</h4>
+  <p>We have got your order. We will try to arrange a maid as soon as possible. After the maid arrives please ask them for their ID, enter the ID onto the website and review the maid.</p>
+  <hr>
+  <p class="mb-0">Make sure to pay the maid as per the pricing plans.</p>
+</div>
+{% else %}
+<h4 class="alert-heading">{{ message1 }}</h4>
+<p>Hope you are enjoying our service!</p>
+<hr>
+<p class="mb-0"><a href="{% url 'user' %}"><b><i>Want to hire a maid?</b></i></p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block home %}
+<style>
+.hj{
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+}
+.hj1{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+.btn btn-dark{
+  color: #0d1442!important;
+}
+</style>
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      {% if request.user.is_authenticated %}
+      <h1 class="display-3">Welcome, {{ request.user }}!</h1>
+      <p>Now Subscribe Maids with Prices as low as &#x20b9; 25 to &#x20b9; 35 / day for any work that you need.</p>
+      <p><a class="btn btn-dark" href="{% url 'user' %}" role="button">Have extra work at home? &raquo;</a></p><p>
+      {% else %}
+      <h1 class="display-3">Hey, there!</h1>
+      <p>Now Subscribe Maids with Prices as low as &#x20b9; 25 to &#x20b9; 35 / day. Sign Up right now for your first Subscription.</p>
+      <p><a class="btn btn-dark" href="{% url 'account_signup' %}" role="button">Sign Up &raquo;</a></p><p>
+      {% endif %}
+    </div>
+  </div>
+<b>
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="hj">Login, only for Maids!</h2>
+        <p class="hj1">Revolutionizing the maid industry in India! Come join us!</p>
+        <p><a class="btn btn-secondary" href="{% url 'maiddata' %}" role="button">Maids only &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="hj">Feel like talking to us?</h2>
+        <p class="hj1">If you wanna give us reviews, or feel like you have suggestions for us, or if you're interested in us? Go ahead and text us!</p>
+        <p><a class="btn btn-secondary" href="{% url 'message' %}" role="button">Text us Right Now! &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="hj">Hired a maid?</h2>
+        <p class="hj1">Here's the next step. Click on this button for more information!</p>
+        <p><a class="btn btn-secondary" href="{% url 'reviewmaid' %}" role="button">Go ahead &raquo;</a></p>
+      </div>
+    </div>
+</b>
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+{% endblock %}

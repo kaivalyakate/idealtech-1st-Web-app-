@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<b><i>
+<style type="text/css">
+table, th, td {
+    padding: 15px;
+    border: 1px solid black;
+    font-size: 15px;
+}
+</style>
+  <table class="table table-striped table-dark">
+    <tr>
+      <th>Time</th>
+      <th colspan="5">address</th>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>City</th>
+      <th>Language--Type</th>
+    </tr>
+    <tr>
+{% for order in orders %}
+<tr>
+<td>{{ order.date_added|date:'M d, Y H:i' }}</td>
+<td colspan="5">{{ order.address|linebreaks }}</td>
+<td>{{ order.name }}</td>
+<td>{{ order.phone_number }}</td>
+<td>{{ order.city }}-{{ order.zipcode }}</td>
+<td>{{ order.language }}--{{ order.worktype}}</td>
+</tr>
+{% empty %}
+<tr>
+<td>There are no orders for this yet.</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock content %}

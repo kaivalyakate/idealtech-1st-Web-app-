@@ -1,0 +1,144 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+<style>
+.body{
+    font-family: 'Lato';font-size: 22px;
+}
+.pagination {
+    margin-top: 20px;
+}
+footer {
+    background: #0d1442!important;
+    padding: 40px;
+    position: relative;
+    top: 48px;
+}
+footer a {
+    color: #f8f9fa!important
+}
+*{margin:0;}
+body{ font: 200 16px/1 sans-serif; }
+img{ width:32.2%; }
+
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript,
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('static/img/eclipse.gif') center no-repeat #fff;
+}
+.zo1{
+  font-size: 15px;
+}
+</style>
+      <title>IDEALTECH: First place on the internet to hire maids!</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/jumbotron.css' %}" rel="stylesheet">
+    {% include 'navbar.html' %}
+  </head>
+  <body bgcolor="#343a40">
+    <div class="se-pre-con"></div>
+{% block ordermaid %}
+{% endblock %}
+{% block home %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block thankyou %}
+{% endblock %}
+{% block yourorders %}
+{% endblock %}
+{% block maidlogin %}
+{% endblock %}
+{% block maidata %}
+{% endblock %}
+{% block review %}
+{% endblock %}
+{% block message %}
+{% endblock %}
+{% url 'home' as home %}
+   <footer class="text-light">
+       <div class="container">
+           <div class="row">
+               <div class="col-md-3 col-lg-4 col-xl-3">
+                   <h5>About</h5>
+                   <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                   <p class="mb-0">
+                       We're a very young startup with innovative mindset doing a bit to solve these real world problems!
+               </div>
+
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                   <h5>Important Links</h5>
+                   <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                   <ul class="list-unstyled">
+                     <b><i>
+                       <li><a href="{% url 'reviewmaid' %}">Add a review?</a></li>
+                       <li><a href="{% url 'user' %}">Want a new maid?</a></li>
+                     </b></i>
+                   </ul>
+               </div>
+
+               <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                   <h5>Note</h5>
+                   <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                   <h1 class="zo1">Right now our team is really working very hard on making your experience on our website as better as we can!</h1>
+                   <p class="zo1">Please come back later, if you want any official documents like our pricing factors, or how we work,etc. At this moment, we are really busy working on these documents!</p>
+               </div>
+
+               <div class="col-md-4 col-lg-3 col-xl-3">
+                   <h5>Contact Us(Because we're interesting!)</h5>
+                   <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                   <ul class="list-unstyled">
+                       <li><i class="fa fa-home mr-2"></i>idealTech Inc.</li>
+                       <li><i class="fa fa-envelope mr-2"></i> idealtech@gmail.com</li>
+                       <li><i class="fa fa-phone mr-2"></i> + 91 91 58 39 96 33</li>
+                   </ul>
+               </div>
+               <div class="col-12 copyright mt-3">
+                   <p class="float-left">
+                      <p>&copy; idealTech Inc. 2018-2019</p>
+                       <a href="#">Back to top</a>
+                   </p>
+                   <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>idealTech Technologies</i></a> | <span>v. 0.11</span></p>
+               </div>
+           </div>
+       </div>
+   </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script type="text/javascript" language="javascript">
+//paste this code under the head tag or in a separate js file.
+	// Wait for window load
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+</script>
+<div id="loading">
+</div>
+  </body>
+</html>

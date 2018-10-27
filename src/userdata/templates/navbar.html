@@ -1,0 +1,48 @@
+<style>
+.bg-dark {
+    background-color: #0d1442!important;
+}
+</style>
+{% url 'home' as home %}
+{% url 'yourorders' as yourorders %}
+{% url 'message' as message %}
+{% url 'maiddata' as maiddata %}
+{% url 'reviewmaid' as reviewmaid %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">idealTech</a>
+  {% if request.path == maiddata or request.path == message or request.path == 'user' or request.path == reviewmaid %}
+  {% else %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% endif %}
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li {% if request.path == home %} class="nav-item active" {% endif %}>
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if user.is_authenticated %}
+      <li {% if request.path == yourorders %} class="nav-item active" {% endif %}>
+        <a class="nav-link" href="{% url 'yourorders' %}">Your Account</a>
+      </li>
+      {% else %}
+      {% endif %}
+      <li {% if request.path == message %} class="nav-item active" {% endif %}>
+        <a class="nav-link" href="{% url 'message' %}">Send us a message?</a>
+      </li>
+      <li class="nav-item dropdown">
+        {% if user.is_authenticated %}
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user }}</a>
+        {% else %}<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions?</a>{% endif %}
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          {% if not request.user.is_authenticated %}
+          <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+          <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up!</a>
+          {% else %}
+          <a class="dropdown-item" href="{% url 'account_logout' %}">Log out?</a>
+          {% endif %}
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

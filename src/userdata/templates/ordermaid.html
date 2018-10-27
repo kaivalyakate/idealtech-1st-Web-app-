@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block ordermaid %}
+<link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/materialize.css' %}" rel="stylesheet">
+<style>
+.zo{
+  font-size: 20px;
+  font-family:  'Orbitron', sans-serif;
+}
+.sty{
+  position: relative;
+  left: 850px;
+  top: 500px;
+}
+.center_div{
+    margin: 0 auto;
+    width:55% /* value of your choice which suits your alignment */
+}
+.zoj{
+  font-size: 11px;
+}
+</style>
+  <div class="card">
+  <div class="card-header">
+    You are just one click away from hiring a maid right from your place!
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">We will contact you within minutes after you fill up this form!</h5>
+    <p class="card-text"><p class="zo">We are here to make hiring maids as easy as possible with least efforts for you to take.</p>
+    <h1 class="zo"><b><i>Hired a maid already? Go ahead add a review!<b><i></h1>  </p>
+      <p>***Please make sure, all the maids availaible here are only for household cleaning purposes. Right now we are not into cooking.(Due to personal factors of users)</p>
+    <a href="{% url 'reviewmaid' %}" class="btn btn-primary">Go add a Review?</a>
+  </div>
+</div>
+<b><i>
+<div class="p-3 mb-2 bg-light text-dark">
+<div class="col-md-4 col-md-offset-6">
+<form action="{% url 'user' %}" method='post'>
+  {% csrf_token %}
+  {{ form|crispy }}
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" required>
+      <label class="form-check-label" for="gridCheck">
+        Agree to Terms and Conditions?
+      </label>
+    </div>
+  </div>
+  <button name="submit" class="btn btn-outline-success">Order Right Now!</button>
+</form>
+</div>
+</div>
+{% endblock %}
